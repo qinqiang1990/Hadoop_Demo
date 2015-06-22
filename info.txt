@@ -26,8 +26,6 @@ Exception in thread "main" java.lang.NullPointerException
 	
 http://blog.csdn.net/u010911997/article/details/44099165
 
-https://www.baidu.com/s?wd=at%20org.apache.hadoop.mapreduce.Job.waitForCompletion%28Job.java%3A1308%29&rsv_spt=1&issp=1&f=8&rsv_bp=0&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=1&rsv_n=2&rsv_sug3=1&rsv_sug2=0&inputT=1377&rsv_sug4=1377
-
 #Mon Jun 22 06:54:06 PDT 2015
 namespaceID=790754132
 clusterID=CID-51d2f4c5-b982-457f-b4f3-c562ec93d28a
@@ -43,6 +41,7 @@ cTime=0
 datanodeUuid=923f4f04-b716-4bf7-ae85-ef72506f3265
 storageType=DATA_NODE
 layoutVersion=-56
+
 #Mon Jun 22 07:23:14 PDT 2015
 storageID=DS-12c064da-dfa4-4a1a-825e-e9c731a60a8a
 clusterID=CID-51d2f4c5-b982-457f-b4f3-c562ec93d28a

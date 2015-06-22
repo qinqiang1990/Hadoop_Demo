@@ -16,7 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring-data-hadoop.version>2.2.0.RELEASE</spring-data-hadoop.version>
 		<junit.version>4.12</junit.version>
-		<hadoop.version>2.7.0</hadoop.version>
+		<hadoop.version>2.6.0</hadoop.version>
 	</properties>
 	<dependencies>
 
