@@ -17,8 +17,15 @@
 		<spring-data-hadoop.version>2.2.0.RELEASE</spring-data-hadoop.version>
 		<junit.version>4.12</junit.version>
 		<hadoop.version>2.6.0</hadoop.version>
+		<zookeeper.version>3.5.0-alpha</zookeeper.version>
 	</properties>
 	<dependencies>
+
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>${zookeeper.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>jdk.tools</groupId>
