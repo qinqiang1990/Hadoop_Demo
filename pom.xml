@@ -18,8 +18,16 @@
 		<junit.version>4.12</junit.version>
 		<hadoop.version>2.6.0</hadoop.version>
 		<zookeeper.version>3.5.0-alpha</zookeeper.version>
+		<hbase.version>1.1.0.1</hbase.version>
+
 	</properties>
 	<dependencies>
+
+		<dependency>
+			<groupId>org.apache.hbase</groupId>
+			<artifactId>hbase-client</artifactId>
+			<version>${hbase.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.zookeeper</groupId>
