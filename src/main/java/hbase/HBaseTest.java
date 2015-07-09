@@ -196,11 +196,13 @@ public class HBaseTest {
 		// TODO Auto-generated method stub
 		try {
 			String tablename = "high";
-			HBaseTest.getHgih(tablename);
+			//HBaseTest.getHgih(tablename);
 			//HBaseTest.getScanRecord(tablename,"zkb","zkc");
 			
-			//String[] familys = { "grade", "course" };
-			//HBaseTest.creatTable(tablename, familys);
+			/*
+			String[] familys = { "grade", "course" };
+			HBaseTest.creatTable(tablename, familys);
+			*/
 			// add record zkb
 			/*
 			HBaseTest.addRecord(tablename, "zkb2", "grade", "", "5");
@@ -222,8 +224,8 @@ public class HBaseTest {
 			 * HBaseTest.delRecord(tablename, "baoniu");
 			 * HBaseTest.getAllRecord(tablename);
 			 */
-/*			System.out.println("===========show all record========");
-			HBaseTest.getAllRecord(tablename);*/
+			/*System.out.println("===========show all record========");*/
+			HBaseTest.getAllRecord(tablename);
 
 		} catch (Exception e) {
 			e.printStackTrace();
