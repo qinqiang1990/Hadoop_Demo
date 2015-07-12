@@ -71,7 +71,7 @@ public class HBaseTest {
 	 * 插入一行记录
 	 */
 	public static void addRecord(String tableName, String rowKey,
-			String family, String qualifier, String value) throws Exception {
+			String family, String qualifier,Long value) throws Exception {
 		try {
 			HTable table = new HTable(conf, tableName);
 			Put put = new Put(Bytes.toBytes(rowKey));
@@ -122,6 +122,12 @@ public class HBaseTest {
 		try {
 			HTable table = new HTable(conf, tableName);
 			Scan s = new Scan();
+			// s.addFamily("coloumn".getBytes());
+
+			// s.addColumn("coloumn".getBytes(),"1".getBytes());
+
+			// s.addColumn("id".getBytes(),"id".getBytes());
+
 			ResultScanner ss = table.getScanner(s);
 			for (Result r : ss) {
 				for (KeyValue kv : r.raw()) {
@@ -140,14 +146,15 @@ public class HBaseTest {
 	/**
 	 * 显示所有数据
 	 */
-	public static void getScanRecord(String tableName,String startRow,String stopRow) {
+	public static void getScanRecord(String tableName, String startRow,
+			String stopRow) {
 		try {
 			HTable table = new HTable(conf, tableName);
 			Scan s = new Scan();
-			s.setStartRow(startRow.getBytes());  
-			s.setStopRow(stopRow.getBytes()); 
-			s.setCaching(50);//1000  
-			s.setCacheBlocks(false);  
+			s.setStartRow(startRow.getBytes());
+			s.setStopRow(stopRow.getBytes());
+			s.setCaching(50);// 1000
+			s.setCacheBlocks(false);
 			ResultScanner ss = table.getScanner(s);
 			for (Result r : ss) {
 				for (KeyValue kv : r.raw()) {
@@ -167,13 +174,12 @@ public class HBaseTest {
 	 * 高窄表
 	 */
 	public static void getHgih(String tableName) {
-		try { 
+		try {
 			HBaseAdmin admin = new HBaseAdmin(conf);
 			if (admin.tableExists(tableName)) {
 				System.out.println("table already exists!");
-			}
-			else {
-				
+			} else {
+
 				HTableDescriptor tableDesc = new HTableDescriptor(tableName);
 				tableDesc.addFamily(new HColumnDescriptor("coloumn"));
 				admin.createTable(tableDesc);
@@ -181,12 +187,13 @@ public class HBaseTest {
 				HTable table = new HTable(conf, tableName);
 				for (int i = 0; i < 10; i++) {
 					Put put = new Put(Bytes.toBytes("rowKey"));
-					put.add(Bytes.toBytes("coloumn"), Bytes.toBytes(String.valueOf(i)),
+					put.add(Bytes.toBytes("coloumn"),
+							Bytes.toBytes(String.valueOf(i)),
 							Bytes.toBytes(String.valueOf(i)));
 					table.put(put);
 				}
 			}
-			HBaseTest.getAllRecord( tableName);
+			HBaseTest.getAllRecord(tableName);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -195,23 +202,30 @@ public class HBaseTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
-			String tablename = "high";
-			//HBaseTest.getHgih(tablename);
-			//HBaseTest.getScanRecord(tablename,"zkb","zkc");
-			
+			String tablename = "persion";
+			// HBaseTest.getHgih(tablename);
+			// HBaseTest.getScanRecord(tablename,"zkb","zkc");
+
 			/*
-			String[] familys = { "grade", "course" };
-			HBaseTest.creatTable(tablename, familys);
-			*/
+			 * String[] familys = { "grade", "course" };
+			 * HBaseTest.creatTable(tablename, familys);
+			 */
 			// add record zkb
+/*
+			HBaseTest.addRecord(tablename, "p1", "id", "id", 25L);
+			HBaseTest.addRecord(tablename, "p2", "id", "id", 90L);
+			HBaseTest.addRecord(tablename, "p3", "id", "id", 97L);
+			HBaseTest.addRecord(tablename, "p4", "id", "id", 87L);
+*/
 			/*
-			HBaseTest.addRecord(tablename, "zkb2", "grade", "", "5");
-			HBaseTest.addRecord(tablename, "zkb2", "course", "", "90");
-			HBaseTest.addRecord(tablename, "zkb2", "course", "math", "97");
-			HBaseTest.addRecord(tablename, "zkb2", "course", "art", "87");
-			// add record baoniu
-			HBaseTest.addRecord(tablename, "baoniu2", "grade", "", "4");
-			HBaseTest.addRecord(tablename, "baoniu2", "course", "math", "89");*/
+			 * HBaseTest.addRecord(tablename, "zkb2", "grade", "", "5");
+			 * HBaseTest.addRecord(tablename, "zkb2", "course", "", "90");
+			 * HBaseTest.addRecord(tablename, "zkb2", "course", "math", "97");
+			 * HBaseTest.addRecord(tablename, "zkb2", "course", "art", "87"); //
+			 * add record baoniu HBaseTest.addRecord(tablename, "baoniu2",
+			 * "grade", "", "4"); HBaseTest.addRecord(tablename, "baoniu2",
+			 * "course", "math", "89");
+			 */
 
 			/*
 			 * System.out.println("===========get one record========");
@@ -224,15 +238,12 @@ public class HBaseTest {
 			 * HBaseTest.delRecord(tablename, "baoniu");
 			 * HBaseTest.getAllRecord(tablename);
 			 */
-			/*System.out.println("===========show all record========");*/
+			/* System.out.println("===========show all record========"); */
 			HBaseTest.getAllRecord(tablename);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
 
 }
